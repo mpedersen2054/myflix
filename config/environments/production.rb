@@ -18,7 +18,7 @@ Myflix::Application.configure do
 
   config.active_support.deprecation = :notify
 
-  config.action_mailer.default_url_options { host: 'mattflix.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'www.mattflix.herokuapp.com' }
 
   config.action_mailer.delivery_method = :smtp
 
