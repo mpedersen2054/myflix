@@ -12,6 +12,9 @@ gem 'bootstrap_form'
 gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'fabrication'
 gem 'faker'
+gem 'sidekiq'
+gem 'sinatra', '>= 1.3.0', :require => nil
+gem 'unicorn'
 
 group :development do
   gem 'sqlite3'
@@ -37,5 +40,6 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'fivemat'
 end
 
