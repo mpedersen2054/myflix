@@ -1,4 +1,7 @@
+require 'sidekiq/web'
 Myflix::Application.routes.draw do
+
+  mount Sidekiq::Web => '/sidekiq'
 
   get '/home', to: 'videos#index'
   resources :videos, except: [:destroy] do
