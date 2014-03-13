@@ -11,6 +11,10 @@ Myflix::Application.routes.draw do
     resources :reviews, only: [:create]
   end
 
+  namespace :admin do
+    resources :videos, only: [:new, :create]
+  end
+
   get '/genre/:id', to: 'categories#show', as: 'category'
 
   resources :relationships, only: [:create, :destroy]
