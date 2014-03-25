@@ -11,4 +11,6 @@
           = hidden_field_tag :invitation_token, @invitation_token
         %fieldset.actions.control-group.col-sm-offset-2
           .controls
-            %input(type="submit" value="Sign Up" class="btn btn-default")
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key=#{ENV['STRIPE_PUBLISHABLE_KEY']} data-name="MattFlix Sign Up Charge" data-description="Best $9.99 you've ever spent." data-amount="999">
+            </script>
+

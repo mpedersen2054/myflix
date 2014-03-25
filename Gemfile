@@ -17,6 +17,8 @@ gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'unicorn'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'stripe'
+gem 'figaro'
 
 group :development do
   gem 'sqlite3'
