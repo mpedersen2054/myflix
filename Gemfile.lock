@@ -235,7 +235,7 @@ GEM
       rack
       raindrops (~> 0.7)
     vcr (2.8.0)
-    webmock (1.17.4)
+    webmock (1.11.0)
       addressable (>= 2.2.7)
       crack (>= 0.3.2)
     xpath (2.0.0)
@@ -280,4 +280,4 @@ DEPENDENCIES
   uglifier
   unicorn
   vcr
-  webmock
+  webmock (= 1.11.0)
