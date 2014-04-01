@@ -20,6 +20,7 @@ VCR.configure do |c|
   c.ignore_localhost = true
 end
 
+Capybara.server_port = 52662
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
@@ -31,27 +32,26 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
   config.order = "random"
   config.treat_symbols_as_metadata_keys_with_true_values = true
+
   RSpec.configure do |config|
+    config.before(:suite) do
+      DatabaseCleaner.clean_with(:truncation)
+    end
 
-  config.before(:suite) do
-    DatabaseCleaner.clean_with(:truncation)
+    config.before(:each) do
+      DatabaseCleaner.strategy = :transaction
+    end
+
+    config.before(:each, :js => true) do
+      DatabaseCleaner.strategy = :truncation
+    end
+
+    config.before(:each) do
+      DatabaseCleaner.start
+    end
+
+    config.after(:each) do
+      DatabaseCleaner.clean
+    end
   end
-
-  config.before(:each) do
-    DatabaseCleaner.strategy = :transaction
-  end
-
-  config.before(:each, :js => true) do
-    DatabaseCleaner.strategy = :truncation
-  end
-
-  config.before(:each) do
-    DatabaseCleaner.start
-  end
-
-  config.after(:each) do
-    DatabaseCleaner.clean
-  end
-
-end
 end

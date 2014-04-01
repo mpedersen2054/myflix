@@ -27,7 +27,7 @@ describe StripeWrapper::Charge do
   context "with invalid credit card", :vcr do
     let(:card_number) { "4000000000000002" }
     let(:charge) do
-      charge = StripeWrapper::Charge.create(amount: 300, card: token)
+      StripeWrapper::Charge.create(amount: 300, card: token)
     end
 
     it "does not successfully charge card" do

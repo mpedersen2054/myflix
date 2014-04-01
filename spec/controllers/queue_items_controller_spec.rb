@@ -142,7 +142,7 @@ describe QueueItemsController do
 
       it "does not change the queue items" do
         post :update_queue, queue_items: [{id: queue_item1.id, position: 3}, {id: queue_item2.id, position: 2.2}]
-        expect(queue_item1.reload.position).to eq(1)
+        expect(queue_item1.position).to eq(1)
       end
     end
 
@@ -155,7 +155,7 @@ describe QueueItemsController do
         queue_item1 = Fabricate(:queue_item, user: alice, position: 1, video: video)
         queue_item2 = Fabricate(:queue_item, user: alice, position: 2, video: video)
         post :update_queue, queue_items: [{id: queue_item1.id, position: 3}, {id: queue_item2.id, position: 2.2}]
-        expect(queue_item1.reload.position).to eq(1)
+        expect(queue_item1.position).to eq(1)
       end
     end
   end

@@ -39,7 +39,7 @@ feature "user invites friend" do
   def friend_signs_in
     fill_in "Email Address", with: "johndoe@example.com"
     fill_in "Password", with: "password"
-    click_button "Sign In"
+    click_button "Sign in"
   end
 
   def friend_should_follow(user)
