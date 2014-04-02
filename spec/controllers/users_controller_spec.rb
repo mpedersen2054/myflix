@@ -34,6 +34,11 @@ describe UsersController do
         expect(User.count).to eq(1)
       end
 
+      it "renders the flash message" do
+        post :create, user: Fabricate.attributes_for(:user)
+        expect(flash[:success]).to eq("Thank you for registering with MattFlix. Please sign in now.")
+      end
+
       it "redirects to the sign_in page" do
         post :create, user: Fabricate.attributes_for(:user)
         expect(response).to redirect_to sign_in_path
@@ -94,6 +99,10 @@ describe UsersController do
 
       it "does not create a user record" do
         expect(User.count).to eq(0)
+      end
+
+      it "shows the flash message" do
+        expect(flash[:danger]).to be_present
       end
 
       it "renders the :new template" do
