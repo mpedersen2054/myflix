@@ -72,8 +72,8 @@ describe UserSignup do
       end
 
       it "does not send out email with invalid inputs" do
-        expect(ActionMailer::Base.deliveries).to be_empty
         UserSignup.new(User.new(email: "joe@example.com")).sign_up('1231231', nil)
+        expect(ActionMailer::Base.deliveries).to be_empty
       end
     end
   end
