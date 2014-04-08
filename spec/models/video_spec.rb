@@ -13,6 +13,15 @@ describe Video do
     expect(video.reviews).to eq([review2, review1])
   end
 
+  describe "rating" do
+    it "returns the average rating of the reviews" do
+      video = Fabricate(:video)
+      review1 = Fabricate(:review, video: video, rating: 1)
+      review2 = Fabricate(:review, video: video, rating: 3)
+      expect(video.rating).to eq(2)
+    end
+  end
+
   describe "search_by_title" do
     let(:futurama) { Fabricate(:video, title: "Futurama", created_at: 1.day.ago) }
     let(:back_to_future) { Fabricate(:video, title: "Back to the Future") }
