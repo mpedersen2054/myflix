@@ -2,6 +2,7 @@ require 'sidekiq/web'
 Myflix::Application.routes.draw do
 
   mount Sidekiq::Web => '/sidekiq'
+  mount StripeEvent::Engine => '/stripe_events'
 
   get '/home', to: 'videos#index'
   resources :videos, except: [:destroy] do
@@ -13,6 +14,7 @@ Myflix::Application.routes.draw do
 
   namespace :admin do
     resources :videos, only: [:new, :create]
+    resources :payments, only: [:index]
   end
 
   get '/genre/:id', to: 'categories#show', as: 'category'

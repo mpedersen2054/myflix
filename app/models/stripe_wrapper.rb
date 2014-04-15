@@ -1,4 +1,5 @@
 module StripeWrapper
+
   class Charge
     attr_reader :response, :status
     def initialize(response, status)
@@ -45,6 +46,10 @@ module StripeWrapper
       rescue Stripe::CardError => e
         new(error_message: e.message)
       end
+    end
+
+    def customer_token
+      response.id
     end
 
     def successful?

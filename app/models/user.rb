@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   validates_presence_of :email, :password, :full_name
   validates_uniqueness_of :email
 
+  has_many :payments
   has_many :reviews, -> { order("created_at DESC") }
   has_many :queue_items, -> { order("position") }
   has_many :following_relationships, class_name: 'Relationship', foreign_key: :follower_id
