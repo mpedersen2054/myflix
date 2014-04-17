@@ -1,0 +1,106 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.stripe.com/v1/events/evt_103r1k21IPceA9OdElMB4ZYB
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Stripe/v1 RubyBindings/1.10.1
+      Authorization:
+      - Bearer sk_test_gHcoYxIa1mPuBXGcGdiFGv0J
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-User-Agent:
+      - '{"bindings_version":"1.10.1","lang":"ruby","lang_version":"2.0.0 p247 (2013-06-27)","platform":"x86_64-darwin13.0.0","publisher":"stripe","uname":"Darwin
+        Matts-MacBook-Air.local 13.1.0 Darwin Kernel Version 13.1.0: Thu Jan 16 19:40:37
+        PST 2014; root:xnu-2422.90.20~2/RELEASE_X86_64 x86_64"}'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 15 Apr 2014 02:06:50 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '1456'
+      Access-Control-Max-Age:
+      - '300'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, HEAD, OPTIONS, DELETE
+      Cache-Control:
+      - no-cache, no-store
+      Strict-Transport-Security:
+      - max-age=31556926; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "id": "evt_103r1k21IPceA9OdElMB4ZYB",
+          "created": 1397518868,
+          "livemode": false,
+          "type": "charge.succeeded",
+          "data": {
+            "object": {
+              "id": "ch_103r1k21IPceA9OdukmOC2y1",
+              "object": "charge",
+              "created": 1397518868,
+              "livemode": false,
+              "paid": true,
+              "amount": 999,
+              "currency": "usd",
+              "refunded": false,
+              "card": {
+                "id": "card_103r1k21IPceA9OdPErN01SJ",
+                "object": "card",
+                "last4": "4242",
+                "type": "Visa",
+                "exp_month": 8,
+                "exp_year": 2014,
+                "fingerprint": "V0X3qM8AG1jhlTrq",
+                "customer": "cus_3r1k8dfdBzY1Aa",
+                "country": "US",
+                "name": null,
+                "address_line1": null,
+                "address_line2": null,
+                "address_city": null,
+                "address_state": null,
+                "address_zip": null,
+                "address_country": null,
+                "cvc_check": "pass",
+                "address_line1_check": null,
+                "address_zip_check": null
+              },
+              "captured": true,
+              "refunds": [],
+              "balance_transaction": "txn_103r1k21IPceA9OdGODZLDzD",
+              "failure_message": null,
+              "failure_code": null,
+              "amount_refunded": 0,
+              "customer": "cus_3r1k8dfdBzY1Aa",
+              "invoice": "in_103r1k21IPceA9Odt5MydzZS",
+              "description": null,
+              "dispute": null,
+              "metadata": {},
+              "statement_description": null
+            }
+          },
+          "object": "event",
+          "pending_webhooks": 0,
+          "request": "iar_3r1kXFUakSzAEl"
+        }
+    http_version: 
+  recorded_at: Tue, 15 Apr 2014 02:06:49 GMT
+recorded_with: VCR 2.8.0

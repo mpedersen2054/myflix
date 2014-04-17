@@ -38,4 +38,52 @@ describe StripeWrapper::Charge do
       expect(charge.error_message).to eq('Your card was declined.')
     end
   end
+
+  describe StripeWrapper::Customer do
+    describe ".create" do
+      context "with valid card", :vcr do
+        let(:card_number) { "4242424242424242" }
+
+        it "creates a customer" do
+          tom = Fabricate(:user)
+          response = StripeWrapper::Customer.create(
+            user: tom,
+            card: token
+          )
+          expect(response).to be_successful
+        end
+
+        it "returns the customer token" do
+          tom = Fabricate(:user)
+          response = StripeWrapper::Customer.create(
+            user: tom,
+            card: token
+          )
+          expect(response.customer_token).to be_present
+        end
+      end
+
+      context "with declined card", :vcr do
+        let(:card_number) { "4000000000000002" }
+
+        it "does not create a customer" do
+          tom = Fabricate(:user)
+          response = StripeWrapper::Customer.create(
+            user: tom,
+            card: token
+          )
+          expect(response).not_to be_successful
+        end
+
+        it "returns the error message" do
+          tom = Fabricate(:user)
+          response = StripeWrapper::Customer.create(
+            user: tom,
+            card: token
+          )
+          expect(response.error_message).to eq("Your card was declined.")
+        end
+      end
+    end
+  end
 end
